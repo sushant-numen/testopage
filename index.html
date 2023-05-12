@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Numen Health</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script
+      href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      defer
+    ></script>
+    <script
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      defer
+    ></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      .numen-logo {
+        background-color: #f3f7ff;
+      }
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.1)
+          ),
+          url(https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/person-holding-anatomic-heart-model-educational-purpose.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 300px;
+        width: 100%;
+        position: relative;
+      }
+      .header-text-white {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        padding-top: 0rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin: 0px;
+      }
+      .header-text-blue {
+        color: #00b2d6;
+        font-size: 1.7rem;
+        padding-top: 0rem;
+      }
+      .hero-approved {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(252, 250, 250, 0.8);
+        padding: 1rem;
+      }
+      .doc-info-text {
+        padding-top: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-style: normal;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+      }
+      .doc-info-text-name {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+      }
+      .doc-info-div {
+        background-image: url(https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/1x/3.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 200px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .rounded-circle {
+        border-radius: 50%;
+        height: 20rem;
+        width: 20rem;
+        background-image: linear-gradient(
+          to right,
+          #00b2d6 0%,
+          #02dcd8 156.72%
+        );
+        border: 1rem solid white;
+        overflow: hidden;
+      }
+      .rounded-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .rounded-circle-yellow {
+        display: block;
+        position: absolute;
+        top: 29%;
+        left: 106%;
+        width: 6rem;
+        height: 6rem;
+        margin: -51px;
+        background: #ffa031;
+        border-radius: 51%;
+        text-align: center;
+        line-height: 7rem;
+        z-index: -10;
+      }
+      .heart {
+        display: block;
+        position: absolute;
+        top: 95%;
+        left: 24%;
+        width: 8rem;
+        height: 8rem;
+        margin: -51px;
+        z-index: 10;
+      }
+      .deg-315 {
+        transform: rotate(44deg) translate(157px) rotate(-161deg);
+      }
+      .doc-info-cards {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .doc-info-div-card {
+        min-height: 100px;
+        width: 12rem;
+        border-radius: 15px;
+      }
+      .doc-info-div-inner-card-blue {
+        height: 4rem;
+        background-color: #02dcd8;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .doc-info-div-inner-card-brown {
+        height: 4rem;
+        background-color: #bfb865;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .white-text {
+        color: #ffffff;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+      }
+      .brown-text {
+        color: #bfffff;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        margin-bottom: 0px;
+      }
+      .about-plan {
+        background-image: linear-gradient(180deg, #00b2d6 0%, #02dcd8 156.72%);
+        padding: 2rem;
+        height: max-content;
+      }
+      .about-plan-header {
+        color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.7rem;
+      }
+      .about-plan-header-sub {
+        color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+      }
+      .about-plan-header-sub-ch {
+        color: white;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+      }
+
+      .ask-the-expert-header {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 12px;
+        color: #232323;
+      }
+
+      .ask-the-expert-header:after {
+        background-color: #000;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 20%;
+      }
+      .ask-the-expert-header:after {
+        left: 0.5em;
+      }
+      .ask-the-expert-header:before {
+        background-color: #000;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 20%;
+      }
+      .ask-the-expert-header:before {
+        right: 0.5em;
+      }
+
+      .about-plan-header-sub:after {
+        background-color: #fff;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 70%;
+      }
+
+      .about-plan-header-sub:after {
+        left: 0.5em;
+      }
+      .about-plan-header-sub-ch:after {
+        background-color: #fff;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 70%;
+      }
+
+      .about-plan-header-sub-ch:after {
+        left: 0.5em;
+      }
+      .what-you-get {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .what-you-get-text {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        color: white;
+      }
+
+      .treatment-goal-card {
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        height: max-content;
+        border-radius: 5px;
+        /* padding: 1rem; */
+        margin: 0.7rem;
+        display: flex;
+      }
+      .treatment-goal-card-text {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #232323;
+        margin-bottom: 0px;
+      }
+      .treatment-goal-card--sub-text {
+        font-family: "Inter";
+        font-style: normal;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #232323;
+        margin-bottom: 0px;
+      }
+      .cholestrol-level-card {
+        width: 11rem;
+        border: 2px solid white;
+        border-radius: 5px;
+        height: 28rem;
+      }
+      .cholestrol-level-card-bold {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 0px;
+        color: #232323;
+      }
+
+      .cholestrol-level-card-white {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        color: #ffffff;
+        margin-bottom: 0px;
+      }
+      .ask-the-expert-card {
+        /* width: 18.5rem; */
+        /* height: 7rem; */
+        border: 1px solid white;
+        border-radius: 5px;
+        background-image: linear-gradient(
+          225.99deg,
+          #02dcd8 1.67%,
+          #00b2d6 100%
+        );
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        /* height: max-content; */
+        margin: 0.7rem;
+        padding: 0.5rem;
+        display: flex;
+      }
+      .ask-the-expert-card-circle {
+        border-radius: 50%;
+        height: 5rem;
+        width: 5rem;
+        background-image: white;
+        border: 1px solid white;
+        overflow: hidden;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+        margin-right: 0.5rem;
+      }
+      .ask-the-expert-card-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .numen-in-news-card {
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        height: max-content;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        /* display: flex;
+        flex-direction: column; */
+      }
+      .numen-in-news-header {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #232323;
+      }
+      .numen-in-news-header-subtext {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #acacac;
+        margin-bottom: 5px;
+      }
+      hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .i-am-intrested {
+        position: fixed;
+        z-index: 100;
+        bottom: 0;
+        width: 100%;
+      }
+      .avaiblable-in-clicks {
+        width: 13rem;
+        height: 21rem;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+      }
+      @media screen and (max-width: 375px) {
+        .deg-315 {
+          transform: rotate(50deg) translate(157px) rotate(-161deg);
+        }
+        .header-text-white {
+          font-size: 2.3rem;
+        }
+        .doc-info-div-card {
+          width: 10rem;
+        }
+        .about-plan-header-sub:after {
+          width: 60%;
+        }
+        .about-plan-header-sub-ch:after {
+          width: 55%;
+        }
+        .cholestrol-level-card {
+          width: 8rem;
+        }
+        .avaiblable-in-clicks {
+          width: 10rem;
+        }
+        .ask-the-expert-header:after {
+          width: 10%;
+        }
+        .ask-the-expert-header:before {
+          width: 10%;
+        }
+      }
+      @media screen and (max-width: 424px) {
+        .about-plan-header-sub-ch:after {
+          width: 65%;
+        }
+        .ask-the-expert-header:after {
+          width: 10%;
+        }
+        .ask-the-expert-header:before {
+          width: 10%;
+        }
+      }
+      @media screen and (max-width: 280px) {
+        .header-text-white {
+          font-size: 2rem;
+        }
+        .doc-info-div-card {
+          width: 9rem;
+        }
+        .cholestrol-level-card {
+          width: 7rem;
+          height: 31rem;
+        }
+        .ask-the-expert-card {
+          display: block;
+        }
+        .about-plan-header-sub:after {
+          width: 50%;
+        }
+        .avaiblable-in-clicks {
+          width: 8rem;
+        }
+
+        .about-plan-header-sub-ch:after {
+          width: 50%;
+        }
+        .ask-the-expert-header:after {
+          width: 6%;
+        }
+        .ask-the-expert-header:before {
+          width: 6%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="">
+      <!-- Numen Logo  -->
+      <div class="numen-logo p-0 m-0">
+        <img
+          src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/numen_logo.png"
+          alt="Numen Health"
+          style="height: 60px; width: 150px"
+        />
+      </div>
+      <!-- //hero section -->
+      <div class="hero">
+        <p class="header-text-white text-center">Worried About Cholesterol?</p>
+        <p class="header-text-blue text-center">
+          Join India's largest digital heart health program today.
+        </p>
+        <div class="hero-approved">
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+119.png"
+            alt="Numen Health"
+            style="height: 100%; width: 100%"
+          />
+        </div>
+      </div>
+      <!-- doctor-info section -->
+      <div class="">
+        <div class="text-center">
+          <p class="doc-info-text">
+            This course will help you reverse your cholesterol levels, organ
+            inflammations and reduce dependency on medications
+          </p>
+        </div>
+        <div class="doc-info-div">
+          <div style="position: absolute">
+            <div class="rounded-circle text-center">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/1x/Dr_Alben.png"
+                alt="Dr. Alben"
+              />
+            </div>
+            <div class="rounded-circle-yellow"></div>
+            <div class="">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+176.png"
+                class="heart"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <p
+            class="doc-info-text"
+            style="padding-bottom: 0px; margin-bottom: 0px"
+          >
+            Course under direct supervision of
+          </p>
+          <p class="doc-info-text-name" style="margin-bottom: 0px">
+            Dr. Alben Sigamani
+          </p>
+          <p
+            style="
+              color: #00b2d6;
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 1.2rem;
+            "
+          >
+            Chief Scientific Officer at Numen Health
+          </p>
+        </div>
+      </div>
+      <div class="doc-info-cards">
+        <div class="doc-info-div-card text-center">
+          <div class="doc-info-div-inner-card-brown">
+            <p class="white-text">50,000+</p>
+          </div>
+          <div class="doc-info-div-inner-card-blue">
+            <p class="brown-text">Patients Helped</p>
+          </div>
+        </div>
+        <div class="doc-info-div-card text-center">
+          <div class="doc-info-div-inner-card-brown">
+            <p class="white-text">250+</p>
+          </div>
+          <div class="doc-info-div-inner-card-blue">
+            <p class="brown-text">Cardiologists Vouch For Numen Health</p>
+          </div>
+        </div>
+        <div class="doc-info-div-card text-center">
+          <div class="doc-info-div-inner-card-brown">
+            <p class="white-text">300+</p>
+          </div>
+          <div class="doc-info-div-inner-card-blue">
+            <p class="brown-text">
+              Cities, Towns & Villages Serviced Across India
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-plan">
+        <div class="text-center about-plan-header">About The Health Plan</div>
+        <div class="about-plan-header-sub">What You Get :</div>
+        <div class="what-you-get" style="padding-top: 1rem">
+          <div style="padding: 0px; margin: 0px">
+            <div style="padding: 0px; margin: 0px">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/55173+%5BConverted%5D-01-01-01.png"
+                alt="Numen Health"
+                style="height: 100%; width: 100%"
+              />
+              <p class="what-you-get-text text-center">
+                Special Protocols by Dr Alben Sigamani
+              </p>
+            </div>
+          </div>
+          <div style="padding: 0px; margin: 0px">
+            <div style="padding: 0px; margin: 0px">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/fitness-woman-drinking-detox-juice+(1).png"
+                alt="Numen Health"
+                style="height: 100%; width: 100%"
+              />
+              <p class="what-you-get-text text-center">
+                Clinical Nutrition Course
+              </p>
+            </div>
+          </div>
+          <div style="padding: 0px; margin: 0px">
+            <div style="padding: 0px; margin: 0px">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/group-young-people-sitting-sukhasana.png"
+                alt="Numen Health"
+                style="height: 100%; width: 100%"
+              />
+              <p class="what-you-get-text text-center">Wellbeing Sessions</p>
+            </div>
+          </div>
+          <div style="padding: 0px; margin: 0px">
+            <div style="padding: 0px; margin: 0px">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/fashionable-young-female-with-grayish-hair-sitting-gomukhasana-cow-pose-while-practicing-hatha-yoga-bedroom-after-awakening-keeping-eyes-closed-pressing-hands-together-nama.png"
+                alt="Numen Health"
+                style="height: 100%; width: 100%"
+              />
+              <p class="what-you-get-text text-center">Medical Yoga Course</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-plan-header-sub">Treatment Goal :</div>
+        <div class="what-you-get" style="padding-top: 1rem">
+          <div class="treatment-goal-card">
+            <div>
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+180.png"
+                alt="Numen Health"
+                style="
+                  height: 8rem;
+                  width: 7rem;
+                  padding-top: 0.5rem;
+                  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                "
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <p class="treatment-goal-card-text">
+                Balance your Triglyceride and LDL
+              </p>
+            </div>
+          </div>
+          <div class="treatment-goal-card">
+            <div>
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+178.png"
+                alt="Numen Health"
+                style="
+                  height: 8rem;
+                  width: 7rem;
+                  padding-top: 0.5rem;
+                  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                "
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <p class="treatment-goal-card-text">Increase your HDL</p>
+            </div>
+          </div>
+        </div>
+        <div class="what-you-get">
+          <div class="treatment-goal-card">
+            <div>
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+179.png"
+                alt="Numen Health"
+                style="
+                  height: 8rem;
+                  width: 7rem;
+                  padding-top: 0.5rem;
+                  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                "
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <p class="treatment-goal-card-text">
+                Reduce dependency on medication
+              </p>
+            </div>
+          </div>
+          <div class="treatment-goal-card">
+            <div>
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+177.png"
+                alt="Numen Health"
+                style="
+                  height: 8rem;
+                  width: 7rem;
+                  padding-top: 0.5rem;
+                  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                "
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <div>
+                <p class="treatment-goal-card-text">
+                  Make yoga and diet part of your routine life
+                </p>
+                <p class="treatment-goal-card--sub-text">
+                  It lowers inflammation, cholesterol, & risk of heart blocks
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-plan-header-sub-ch">Cholesterol Level :</div>
+        <div class="what-you-get" style="padding-top: 2rem">
+          <div class="cholestrol-level-card">
+            <div
+              style="
+                background-color: #ff6242;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                border-top-right-radius: 3px;
+                border-top-left-radius: 3px;
+                color: white;
+                border-bottom: 2px solid white;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.161);
+              "
+              class="text-center"
+            >
+              Dangerous
+            </div>
+            <div
+              class="text-center"
+              style="padding-top: 1.5rem; padding-bottom: 1.5rem"
+            >
+              <p class="cholestrol-level-card-bold">240-Higher</p>
+              <p class="cholestrol-level-card-white">Total Cholesterol</p>
+            </div>
+            <div
+              style="
+                background-color: rgba(4, 4, 4, 0.1);
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+              "
+              class="text-center"
+            >
+              <p class="cholestrol-level-card-bold">160-Higher</p>
+              <p class="cholestrol-level-card-white">LDL Cholesterol</p>
+            </div>
+            <div class="text-center" style="padding-top: 2rem">
+              <p class="cholestrol-level-card-white">Male</p>
+              <p class="cholestrol-level-card-bold">Under 40</p>
+              <p
+                class="cholestrol-level-card-white"
+                style="padding-top: 0.5rem"
+              >
+                Female
+              </p>
+              <p class="cholestrol-level-card-bold">Under 50</p>
+              <p class="cholestrol-level-card-white">HDL Cholesterol</p>
+            </div>
+          </div>
+
+          <div class="cholestrol-level-card">
+            <div
+              style="
+                background-color: #ffd400;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                border-top-right-radius: 3px;
+                border-top-left-radius: 3px;
+                color: #000000;
+                border-bottom: 2px solid white;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.161);
+              "
+              class="text-center"
+            >
+              At-Risk
+            </div>
+            <div
+              class="text-center"
+              style="padding-top: 1.5rem; padding-bottom: 1.5rem"
+            >
+              <p class="cholestrol-level-card-bold">200-239</p>
+              <p class="cholestrol-level-card-white">Total Cholesterol</p>
+            </div>
+            <div
+              style="
+                background-color: rgba(4, 4, 4, 0.1);
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+              "
+              class="text-center"
+            >
+              <p class="cholestrol-level-card-bold">100-159</p>
+              <p class="cholestrol-level-card-white">LDL Cholesterol</p>
+            </div>
+            <div class="text-center" style="padding-top: 2rem">
+              <p class="cholestrol-level-card-white">Male</p>
+              <p class="cholestrol-level-card-bold">40-59</p>
+              <p
+                class="cholestrol-level-card-white"
+                style="padding-top: 0.5rem"
+              >
+                Female
+              </p>
+              <p class="cholestrol-level-card-bold">50-59</p>
+              <p class="cholestrol-level-card-white">HDL Cholesterol</p>
+            </div>
+          </div>
+
+          <div class="cholestrol-level-card">
+            <div
+              style="
+                background-color: #b8cb70;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                border-top-right-radius: 3px;
+                border-top-left-radius: 3px;
+                color: #1d293f;
+                border-bottom: 2px solid white;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.161);
+              "
+              class="text-center"
+            >
+              Healthy
+            </div>
+            <div
+              class="text-center"
+              style="padding-top: 1.5rem; padding-bottom: 1.5rem"
+            >
+              <p class="cholestrol-level-card-bold">Under 200</p>
+              <p class="cholestrol-level-card-white">Total Cholesterol</p>
+            </div>
+            <div
+              style="
+                background-color: rgba(4, 4, 4, 0.1);
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+              "
+              class="text-center"
+            >
+              <p class="cholestrol-level-card-bold">Under 100</p>
+              <p class="cholestrol-level-card-white">LDL Cholesterol</p>
+            </div>
+            <div class="text-center" style="padding-top: 4rem">
+              <p class="cholestrol-level-card-bold">60 - Higher</p>
+              <p class="cholestrol-level-card-white">HDL Cholesterol</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="padding-top: 2rem">
+          <p class="cholestrol-level-card-bold">Move to healthy in 3 months</p>
+        </div>
+      </div>
+      <!-- Available in few clicks -->
+      <div
+        style="
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+          background-image: url('https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/BG+Texture-01+(1).png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+        "
+      >
+        <div class="text-center">
+          <p
+            style="
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 1.8rem;
+              color: #1d293f;
+            "
+          >
+            Available in just a few clicks!
+          </p>
+        </div>
+        <div style="display: flex; justify-content: space-evenly">
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+182.png"
+            alt="Numen Health"
+            class="avaiblable-in-clicks"
+          />
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+184.png"
+            alt="Numen Health"
+            class="avaiblable-in-clicks"
+          />
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+183.png"
+            alt="Numen Health"
+            class="avaiblable-in-clicks"
+          />
+        </div>
+      </div>
+
+      <!-- ask expert cholestrol -->
+      <div class="" style="background-color: #c3f5ff; padding: 2rem">
+        <div class="text-center">
+          <p class="ask-the-expert-header">#AskTheExpert about Cholesterol!</p>
+        </div>
+        <div class="what-you-get">
+          <div class="ask-the-expert-card">
+            <div
+              style="
+                display: flex;
+                align-content: center;
+                flex-wrap: wrap;
+                margin: 0.5rem;
+              "
+            >
+              <p
+                class=""
+                style="
+                  font-family: 'Inter';
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 1.2rem;
+                  color: #1d293f;
+                  margin-bottom: 5px;
+                "
+              >
+                How To Reduce LDL Cholesterol
+              </p>
+              <p
+                class=""
+                style="color: white; margin-bottom: 5px; font-size: 1rem"
+              >
+                Best Healthy Diet Tips
+              </p>
+              <p
+                class=""
+                style="color: #1d293f; font-size: 0.9rem; font-weight: 500"
+              >
+                Check out Numen Health on YouTube!
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="ask-the-expert-card-circle">
+                <img
+                  src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/noor.png"
+                  alt="Noor Sabah"
+                />
+              </div>
+              <p
+                style="
+                  margin-bottom: 0px;
+                  color: #1d293f;
+                  font-size: 10px;
+                  font-weight: 500;
+                "
+                class="text-center"
+              >
+                Noor Sabah
+              </p>
+            </div>
+          </div>
+          <div class="ask-the-expert-card">
+            <div
+              style="
+                display: flex;
+                align-content: center;
+                flex-wrap: wrap;
+                margin: 0.5rem;
+              "
+            >
+              <p
+                class=""
+                style="
+                  font-family: 'Inter';
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 1.2rem;
+                  color: #1d293f;
+                  margin-bottom: 5px;
+                "
+              >
+                What is Dyslipidemia
+              </p>
+              <p
+                class=""
+                style="color: white; margin-bottom: 5px; font-size: 1rem"
+              >
+                Know about Cholesterol & Triglycerides levels
+              </p>
+              <p
+                class=""
+                style="color: #1d293f; font-size: 0.9rem; font-weight: 500"
+              >
+                Check out Numen Health on YouTube!
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="ask-the-expert-card-circle">
+                <img
+                  src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/ssIyer.png"
+                  alt="S.S. Iyengar"
+                />
+              </div>
+              <p
+                style="
+                  margin-bottom: 0px;
+                  color: #1d293f;
+                  font-size: 10px;
+                  font-weight: 500;
+                "
+                class="text-center"
+              >
+                S.S. Iyengar
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- testimonials -->
+      <div
+        style="
+          background-image: linear-gradient(
+            45.79deg,
+            #00b2d6 -11.87%,
+            #02dcd8 100%
+          );
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        "
+      >
+        <div class="text-center">
+          <p
+            style="
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 1.8rem;
+              color: #1d293f;
+            "
+          >
+            Testimonials
+          </p>
+        </div>
+        <div style="padding-left: 3rem; padding-right: 3rem">
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+186.png"
+            alt="Numen Health"
+            style="
+              height: 100%;
+              width: 100%;
+              box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+            "
+          />
+        </div>
+      </div>
+      <!-- plans & prices  -->
+      <div
+        style="
+          background-color: #c3f5ff;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        "
+      >
+        <div class="text-center">
+          <p
+            style="
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 1.8rem;
+              color: #1d293f;
+            "
+          >
+            Best Plans and Prices
+          </p>
+        </div>
+        <div
+          style="padding-left: 3rem; padding-right: 3rem; padding-bottom: 2rem"
+        >
+          <img
+            src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Group+175+(1).png"
+            alt="Numen Health"
+            style="
+              height: 100%;
+              width: 100%;
+              box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+            "
+          />
+        </div>
+      </div>
+
+      <!-- numen in news -->
+      <div
+        style="
+          background-image: linear-gradient(
+            45.79deg,
+            #00b2d6 -11.87%,
+            #02dcd8 100%
+          );
+          padding-top: 2rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-bottom: 7rem;
+        "
+      >
+        <div class="about-plan-header-sub">Numen in News :</div>
+        <div style="display: flex; justify-content: space-evenly">
+          <div class="numen-in-news-card">
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/1678245535_MNytvS_images+(1).png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+            <p class="numen-in-news-header">Women's Day Heart Health</p>
+            <p class="numen-in-news-header-subtext">
+              Women usually do not exhibit classic signs of a heart attack...
+            </p>
+            <hr />
+            <p
+              class="text-center"
+              style="
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 0.8rem;
+                line-height: 7px;
+              "
+            >
+              Featured in
+            </p>
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/image+3.png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+          </div>
+          <div class="numen-in-news-card">
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/doctor-istock-1186555-1675187400.png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+            <p class="numen-in-news-header">Budget 2023</p>
+            <p class="numen-in-news-header-subtext">
+              Budget should enable inclusive healthcare ecosystem...
+            </p>
+
+            <hr />
+            <p
+              class="text-center"
+              style="
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 0.8rem;
+              "
+            >
+              Featured in
+            </p>
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/image+2.png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+          </div>
+          <div class="numen-in-news-card">
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/Screenshot+2023-04-16+115428.png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+            <p class="numen-in-news-header">EHCC Release</p>
+            <p class="numen-in-news-header-subtext">
+              Keep your heart healthy at home with the help of Eternal Health...
+            </p>
+            <hr />
+            <p
+              class="text-center"
+              style="
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 0.8rem;
+              "
+            >
+              Featured in
+            </p>
+            <img
+              src="https://s3.ap-south-1.amazonaws.com/prod.numenhealth.com/1_mg/4x/image+1.png"
+              alt="Numen Health"
+              style="height: 100%; width: 100%"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- I am Intrested -->
+      <div class="i-am-intrested text-center">
+        <div
+          style="
+            background-color: #f3f7ff;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+          class=""
+        >
+          <button
+            id="brand-cta"
+            class=""
+            style="
+              background-color: #00b2d6;
+              border: none;
+              border-radius: 5px;
+              color: white;
+              font-size: 1.5rem;
+              font-weight: bold;
+              width: 80%;
+              padding-top: 0.5rem;
+              padding-bottom: 0.5rem;
+            "
+          >
+            I am Interested
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
